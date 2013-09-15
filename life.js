@@ -1,6 +1,7 @@
 var DEAD = 0;
 var ALIVE = 1;
 
+
 // initialize the board object in a closure
 var Board = function (MAX_X, MAX_Y) {
 	var board = [];
@@ -10,15 +11,86 @@ var Board = function (MAX_X, MAX_Y) {
 	for (var i = 0; i < MAX_X; i++) {
 		board[i] = []
 		next_gen[i] = []
-		for (j = 0; j < MAX_Y; j++) {
-			if (i % 3 == j % 3) {
-				board[i][j] = ALIVE; // some way of doing initial configurations ? ? ? :D
-			} else {
-				board[i][j] = DEAD;
-			}
+	}
+
+	for (var i = 0; i < MAX_X; i++) {
+		for (var j = 0; j < MAX_Y; j++) {
+			board[i][j] = 0;
 		}
 	}
 
+/*
+	// INITIALIZE BOARD - got idea to initialize to time from Law Smith
+	var date = new Date();
+	var hour = date.getHours();
+	var min = date.getMinutes();
+
+	timeDigits = [];
+	timeDigits.push(parseInt(('' + hour).toString()[0]));
+	timeDigits.push(hour % 10);
+	timeDigits.push(parseInt(('' + min).toString()[0]));
+	timeDigits.push(min % 10);
+	
+	var numberMappings = {
+		0:[1, 2, 4, 5, 6, 7],
+		1:[4, 7],
+		2:[1, 3, 4, 5, 6],
+		3:[1, 3, 4, 6, 7],
+		4:[2, 3, 4, 7],
+		5:[1, 2, 3, 6, 7],
+		6:[1, 2, 3, 5, 6, 7],
+		7:[1, 4, 7],
+		8:[1, 2, 3, 4, 5, 6, 7],
+		9:[1, 2, 3, 4, 7]};
+
+	for (var i = 0; i < timeDigits.length; i++) {
+		var toFillIn = numberMappings[timeDigits[i]];
+
+
+		var horizontalStart = 1 + 3 * i;
+		if (i > 1) {
+			horizontalStart += 3;
+		}
+
+		var verticalStart = 7;
+		horizontalStart = 0;
+		verticalStart = 0;
+
+		for (var j = 0; j < toFillIn.length; j++) {
+			var nextNum = toFillIn.pop();
+			if (nextNum === 1) {
+				board[0 + horizontalStart][0 + verticalStart] = ALIVE;
+				board[1 + horizontalStart][0 + verticalStart] = ALIVE;
+				board[2 + horizontalStart][0 + verticalStart] = ALIVE;
+			} else if (nextNum === 2) {
+				board[0 + horizontalStart][0 + verticalStart] = ALIVE;
+				board[0 + horizontalStart][1 + verticalStart] = ALIVE;
+				board[0 + horizontalStart][2 + verticalStart] = ALIVE;
+			} else if (nextNum === 3) {
+				board[0 + horizontalStart][2 + verticalStart] = ALIVE;
+				board[1 + horizontalStart][2 + verticalStart] = ALIVE;
+				board[2 + horizontalStart][2 + verticalStart] = ALIVE;
+			} else if (nextNum === 4) {
+				board[2 + horizontalStart][0 + verticalStart] = ALIVE;
+				board[2 + horizontalStart][1 + verticalStart] = ALIVE;
+				board[2 + horizontalStart][2 + verticalStart] = ALIVE;
+			} else if (nextNum === 5) {
+				board[0 + horizontalStart][2 + verticalStart] = ALIVE;
+				board[0 + horizontalStart][3 + verticalStart] = ALIVE;
+				board[0 + horizontalStart][4 + verticalStart] = ALIVE;
+			} else if (nextNum === 6) {
+				board[0 + horizontalStart][4 + verticalStart] = ALIVE;
+				board[1 + horizontalStart][4 + verticalStart] = ALIVE;
+				board[2 + horizontalStart][4 + verticalStart] = ALIVE;
+			} else if (nextNum === 7) {
+				board[2 + horizontalStart][2 + verticalStart] = ALIVE;
+				board[2 + horizontalStart][3 + verticalStart] = ALIVE;
+				board[2 + horizontalStart][4 + verticalStart] = ALIVE;
+			}
+		}
+	}
+*/
+	board[2][5] = ALIVE;
 	return {
 		update: function() {
 			for (var i = 0; i < MAX_X; i++) {

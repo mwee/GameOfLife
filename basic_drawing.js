@@ -61,10 +61,10 @@
 	// setinterval(n, fn)
 	setInterval( function() {
 		draw_board();
+		update_graphics(life.get_board());
 		//pad.draw_rectangle(Coord(24,24), 14, 14, 0, black, black);
 		life.update();
-		update_graphics(life.get_board());
-	}, 200);
+	}, 5000);
 
 
 
