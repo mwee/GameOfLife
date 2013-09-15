@@ -16,8 +16,8 @@ var Pad = function (canvas) {
 	var DEFAULT_LINE_WIDTH = 2;
 
 	var context = canvas.getContext('2d');
-	var width = canvas.width;
-	var height = canvas.height;
+	var width = canvas.width - 2;
+	var height = canvas.height - 2;
 
 	console.log(height)
 	// sets the line width for subsequent drawing
