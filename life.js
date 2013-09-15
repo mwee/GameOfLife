@@ -19,19 +19,19 @@ var Board = function (MAX_X, MAX_Y) {
 		}
 	}
 
-/*
+
 	// INITIALIZE BOARD - got idea to initialize to time from Law Smith
 	var date = new Date();
 	var hour = date.getHours();
 	var min = date.getMinutes();
 
-	timeDigits = [];
+	var timeDigits = [];
 	timeDigits.push(parseInt(('' + hour).toString()[0]));
 	timeDigits.push(hour % 10);
 	timeDigits.push(parseInt(('' + min).toString()[0]));
 	timeDigits.push(min % 10);
 	
-	var numberMappings = {
+	var numbersToLines = {
 		0:[1, 2, 4, 5, 6, 7],
 		1:[4, 7],
 		2:[1, 3, 4, 5, 6],
@@ -44,20 +44,19 @@ var Board = function (MAX_X, MAX_Y) {
 		9:[1, 2, 3, 4, 7]};
 
 	for (var i = 0; i < timeDigits.length; i++) {
-		var toFillIn = numberMappings[timeDigits[i]];
+
+		var linesList = numbersToLines[timeDigits[i]];
 
 
-		var horizontalStart = 1 + 3 * i;
+		var horizontalStart = 1 + 4 * i;
 		if (i > 1) {
 			horizontalStart += 3;
 		}
 
 		var verticalStart = 7;
-		horizontalStart = 0;
-		verticalStart = 0;
 
-		for (var j = 0; j < toFillIn.length; j++) {
-			var nextNum = toFillIn.pop();
+		for (var j = 0; j < linesList.length; j++) {
+			var nextNum = linesList[j];
 			if (nextNum === 1) {
 				board[0 + horizontalStart][0 + verticalStart] = ALIVE;
 				board[1 + horizontalStart][0 + verticalStart] = ALIVE;
@@ -88,9 +87,17 @@ var Board = function (MAX_X, MAX_Y) {
 				board[2 + horizontalStart][4 + verticalStart] = ALIVE;
 			}
 		}
+
+		board[9][7] = ALIVE;
+		board[9][8] = ALIVE;
+		board[10][7] = ALIVE;
+		board[10][8] = ALIVE;
+		board[9][10] = ALIVE;
+		board[9][11] = ALIVE;
+		board[10][10] = ALIVE;
+		board[10][11] = ALIVE;
 	}
-*/
-	board[2][5] = ALIVE;
+
 	return {
 		update: function() {
 			for (var i = 0; i < MAX_X; i++) {

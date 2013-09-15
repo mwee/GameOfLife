@@ -64,7 +64,7 @@
 		update_graphics(life.get_board());
 		//pad.draw_rectangle(Coord(24,24), 14, 14, 0, black, black);
 		life.update();
-	}, 5000);
+	}, 3000);
 
 
 
