@@ -19,7 +19,7 @@ var Pad = function (canvas) {
 	var width = canvas.width;
 	var height = canvas.height;
 
-
+	console.log(height)
 	// sets the line width for subsequent drawing
 	var apply_line_width = function (ctx, line_width) {
 		ctx.lineWidth = (line_width) ? line_width : DEFAULT_LINE_WIDTH;
