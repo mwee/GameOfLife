@@ -13,6 +13,13 @@ var Board = function (MAX_X, MAX_Y) {
 		next_gen[i] = []
 	}
 
+	// initialize everything to DEAD
+	for (var i = 0; i < MAX_X; i++) {
+		for (var j = 0; j < MAX_Y; j++) {
+			board[i][j] = DEAD;
+		}
+	}
+
 	// method to initialize board state - got idea to initialize the board to the current time from Law Smith
 	var initialize_board = function() {
 		var date = new Date();
@@ -100,8 +107,56 @@ var Board = function (MAX_X, MAX_Y) {
 		board[10][11] = ALIVE;
 	}
 
+	var initialize_test = function() {
+		// block still life
+		board[1][1] = ALIVE;
+		board[1][2] = ALIVE;
+		board[2][1] = ALIVE;
+		board[2][2] = ALIVE;
+
+		// beehive
+		board[5][2] = ALIVE;
+		board[6][1] = ALIVE;
+		board[6][3] = ALIVE;
+		board[7][1] = ALIVE;
+		board[7][3] = ALIVE;
+		board[8][2] = ALIVE;
+
+		// loaf
+		board[15][2] = ALIVE;
+		board[16][1] = ALIVE;
+		board[16][3] = ALIVE;
+		board[17][4] = ALIVE;
+		board[17][1] = ALIVE;
+		board[18][2] = ALIVE;
+		board[18][3] = ALIVE;
+
+		// blinker
+		board[4][8] = ALIVE;
+		board[4][9] = ALIVE;
+		board[4][10] = ALIVE;
+
+		// beacon
+		board[15][10] = ALIVE
+		board[16][10] = ALIVE;
+		board[15][11] = ALIVE;
+		board[17][13] = ALIVE;
+		board[18][12] = ALIVE;
+		board[18][13] = ALIVE;
+
+		// glider
+		board[4][13] = ALIVE
+		board[6][13] = ALIVE;
+		board[5][14] = ALIVE;
+		board[6][14] = ALIVE;
+		board[5][15] = ALIVE;
+
+	}
+
 	initialize_board();
 	set_colons();
+	// INTIIALIZE_TEST() CONTAINS TEST CONFIGURATIONS
+	//initialize_test();
 
 	// return in the Board closure an update method and a get_board method
 	return {
@@ -122,7 +177,12 @@ var Board = function (MAX_X, MAX_Y) {
 							}
 						}
 					}
-					
+	
+					if (i===5&&j===9) {
+						console.log("5, 9 neighbours:" + num_live_neighbours);
+						console.log("5, 9 status: " + board[i][j]);
+					}
+
 					// logic of the game of life based on current cell state and number of neighbours
 					if (cell === ALIVE && num_live_neighbours < 2) {
 						next_gen[i][j] = DEAD;
