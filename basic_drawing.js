@@ -1,4 +1,4 @@
-// a demonstration program using the graphics library
+// the main method executing the game of life, running updates, and updating the graphics
 (function () {
 	// define some colors
 	var black = Color(0,0,0);
@@ -6,9 +6,6 @@
 	var green = Color(0,255,0);
 	var blue = Color(0,0,255);
 	var white = Color(255, 255, 255);
-
-	// COULD PUT IN CLOSURE
-
 
 	// create the drawing pad object and associate with the canvas
 	pad = Pad(document.getElementById('canvas'));
@@ -18,31 +15,31 @@
 	var MAX_X = 20;
 	var MAX_Y = 20;
 
+ 	// set the width of every cell
 	var x_factor = pad.get_width() / MAX_X;
 	var y_factor = pad.get_height() / MAX_Y;
   
+  	// set the side lengths of each square
   	var SIDE_LENGTH = x_factor - 6;
 
-	// draw a box
-	//pad.draw_rectangle(Coord(0, 0), pad.get_width(), pad.get_height(), 5, black);
-
-	// draw some circles and squares inside
-
-	// console.log(pad.get_width())
-	var draw_board = function() {
+  	// draw the grid lines
+	var draw_grid = function() {
+		// draw vertical lines
 		for (var i = 1; i < MAX_X; i++) {
 			pad.draw_line(Coord(i * x_factor + 1, 0), Coord(i * x_factor + 1, pad.get_height()), 1, black);
 		}
-
+		// draw horizontal lines
 		for (var i = 1; i < MAX_Y; i++) {
 			pad.draw_line(Coord(0, i * y_factor + 1), Coord(pad.get_width(), i * y_factor + 1), 1, black);
 		}
+		// draw edge lines
 		pad.draw_line(Coord(401, 401), Coord(0, 401), 1, black);
 		pad.draw_line(Coord(401, 401), Coord(401, 0), 1, black);
 		pad.draw_line(Coord(1,1), Coord(1, 401), 1, black);
 		pad.draw_line(Coord(1,1), Coord(401, 1), 1, black);
 	}
 
+	// update the user-facing board by iterating across the board variable returned by the Board closure
 	var update_graphics = function(board) {
 		for (var i = 0; i < MAX_X; i++) {
 			for (var j = 0; j < MAX_Y; j++) {
@@ -55,25 +52,16 @@
 		}
 	}
 
+	// initialize Board
 	var life = Board(MAX_X, MAX_Y);
 
-	// update graphics
-	// setinterval(n, fn)
-	setInterval( function() {
-		draw_board();
+	// the main driver loop: draw grid lines, update the graphics, update the game of life state
+	setInterval(function() {
+		draw_grid();
 		update_graphics(life.get_board());
-		//pad.draw_rectangle(Coord(24,24), 14, 14, 0, black, black);
 		life.update();
-	}, 3000);
+	}, 800);
 
 
 
 }) ()
-
-
-	
-// need an array that keeps track of live and dead cells available for graphic library 
-
-// while (true) { updateGrid()
-// 	updateGraphics()
-// }

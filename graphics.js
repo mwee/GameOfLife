@@ -16,10 +16,11 @@ var Pad = function (canvas) {
 	var DEFAULT_LINE_WIDTH = 2;
 
 	var context = canvas.getContext('2d');
+
+	// ONLY CHANGE TO GRAPHICS LIBRARY - to adjust for the borders by 2px in each direction.
 	var width = canvas.width - 2;
 	var height = canvas.height - 2;
 
-	console.log(height)
 	// sets the line width for subsequent drawing
 	var apply_line_width = function (ctx, line_width) {
 		ctx.lineWidth = (line_width) ? line_width : DEFAULT_LINE_WIDTH;
