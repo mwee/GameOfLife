@@ -1,7 +1,7 @@
 // the main method executing the game of life, running updates, and updating the graphics
 
 
-$( "#slider" ).slider({min: 0, max: 2000});
+$( "#slider" ).slider({min: 0, max: 5000});
 
 
 // define some colors
@@ -59,11 +59,13 @@ $( "#slider" ).slider( "value", 800 );
 var interval;
 var slider_val;
 var startLife = function() {
-	interval = setInterval(function() {
+	interval = setTimeout(function() {
 		slider_val = $("#slider").slider("value");
+		console.log("slider_val:" + slider_val)
 		draw_grid();
 		update_graphics(life.get_board());
 		life.update();
+		startLife();
 	}, slider_val);
 }
 
