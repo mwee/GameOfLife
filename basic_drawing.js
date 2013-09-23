@@ -52,16 +52,26 @@
 		}
 	}
 
+	var speed = 800;
+	var interval;
+	var startLife = function() {
+		interval = setInterval(function() {
+			draw_grid();
+			update_graphics(life.get_board());
+			life.update();
+		}, speed);
+	}
+
+	var stop = clearInterval(interval)
+
+
 	// initialize Board
 	var life = Board(MAX_X, MAX_Y);
 
 	// the main driver loop: draw grid lines, update the graphics, update the game of life state
-	setInterval(function() {
-		draw_grid();
-		update_graphics(life.get_board());
-		life.update();
-	}, 800);
+	
 
 
 
 }) ()
+

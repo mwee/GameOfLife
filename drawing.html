@@ -3,15 +3,21 @@
 <head>
     <script src="graphics.js"></script>
     <script src="life.js"></script>
+	<script src="basic_drawing.js"></script>
 
     <style>
-
-    canvas {position: absolute; left: 50px; top: 50px;}
+    canvas {position: absolute; left: 0; right: 0; top: 0; bottom:0; margin: auto;}
+    #buttons{display: block; margin-left: auto; margin-right: auto;}
     </style>
+
 </head>
 
 <body>
 
+<div id="buttons">
+	<button id="start" onclick="startLife()">Start</button>
+	<button id="stop" onclick="stop()">Stop</button>
+</div>
 
 <!-- 
 define the HTML canvas element that will hold the graphical output; set height and width of canvas
@@ -21,7 +27,6 @@ define the HTML canvas element that will hold the graphical output; set height a
 <!--
 execute the JavaScript
 -->
-<script src="basic_drawing.js"></script>
 
 </body>
 </html>

@@ -1,3 +1,10 @@
+// START/STOP FUNCTIONALITY - clearInterval
+// DOM <-> GRID EVENT LISTENERS
+// ADD SPEED OPTION --> SET INTERVAL SPEED
+// make it look nice
+// refactor some code
+
+
 // variable names DEAD and ALIVE for readability
 var DEAD = 0;
 var ALIVE = 1;
@@ -176,11 +183,6 @@ var Board = function (MAX_X, MAX_Y) {
 								num_live_neighbours++;
 							}
 						}
-					}
-	
-					if (i===5&&j===9) {
-						console.log("5, 9 neighbours:" + num_live_neighbours);
-						console.log("5, 9 status: " + board[i][j]);
 					}
 
 					// logic of the game of life based on current cell state and number of neighbours
