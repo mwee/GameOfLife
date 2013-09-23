@@ -1,6 +1,9 @@
 // the main method executing the game of life, running updates, and updating the graphics
 
 
+$( "#slider" ).slider({min: 0, max: 2000});
+
+
 // define some colors
 var black = Color(0,0,0);
 var red = Color(255,0,0);
@@ -52,21 +55,19 @@ var update_graphics = function(board) {
 		}
 	}
 }
-
-var speed = 800;
+$( "#slider" ).slider( "value", 800 );
 var interval;
+var slider_val;
 var startLife = function() {
 	interval = setInterval(function() {
+		slider_val = $("#slider").slider("value");
 		draw_grid();
 		update_graphics(life.get_board());
 		life.update();
-	}, speed);
+	}, slider_val);
 }
 
 var stop = function() { clearInterval(interval); }
-
-console.log("startLife: " + startLife)
-console.log("stop; " + stop)
 
 // initialize Board
 var life = Board(MAX_X, MAX_Y);

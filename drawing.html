@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
     <style>
     canvas {position: absolute; left: 0; right: 0; top: 0; bottom:0; margin: auto;}
     #buttons{display: block; margin-left: auto; margin-right: auto;}
+    
     </style>
 
 </head>
@@ -17,6 +20,8 @@
 	<button id="start" onclick="startLife()">Start</button>
 	<button id="stop" onclick="stop()">Stop</button>
 </div>
+
+<div id="slider"></div>
 
 <!-- 
 define the HTML canvas element that will hold the graphical output; set height and width of canvas
