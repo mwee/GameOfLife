@@ -1,5 +1,6 @@
 // START/STOP FUNCTIONALITY - clearInterval
-// DOM <-> GRID EVENT LISTENERS
+
+// DOM <-> GRID EVENT LISTENERS -> MAKE IT A TABLE
 // ADD SPEED OPTION --> SET INTERVAL SPEED
 // make it look nice
 // refactor some code
