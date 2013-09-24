@@ -1,7 +1,6 @@
-// START/STOP FUNCTIONALITY - clearInterval
 
-// DOM <-> GRID EVENT LISTENERS -> MAKE IT A TABLE
-// ADD SPEED OPTION --> SET INTERVAL SPEED
+// DOM <-> GRID EVENT LISTENERS
+
 // make it look nice
 // refactor some code
 
@@ -209,6 +208,11 @@ var Board = function (MAX_X, MAX_Y) {
 			}
 
 		},
+
+		set_board: function(board_in) {
+			board = board_in
+		},
+
 		// get_board returns the board variable, most notably for the graphics library to update the user-facing board 
 		get_board: function() {
 			return board;
