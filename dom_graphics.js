@@ -1,3 +1,4 @@
+// for each functional
 var for_each = function(max_iter, f) {
 	for (var i = 0; i < max_iter; i++) {
 		for (var j = 0; j < max_iter; j++) {
@@ -6,10 +7,11 @@ var for_each = function(max_iter, f) {
 	}
 }
 
-
+// Display holds state for the DOM 
 var Display = function (init_board) { 
 	SIDE_LENGTH = 20
 
+	// make all of the rows
 	var make_row = function (j) {
 		var row_name = 'row' + j
 		var row = $('<div>', {id:row_name, class: 'row'});
@@ -19,6 +21,7 @@ var Display = function (init_board) {
 		return row
 	}
 
+	// make all of the inidividual cells
 	var make_cell = function(x, y) {
 		var cell_name = x + '-' + y ;
 		var cell = $('<div>', 
@@ -32,6 +35,7 @@ var Display = function (init_board) {
 	}
 
 	return {
+		// callback function to set cells to dead or alive when a cell is clicked on the DOM
 		clicked: function(cell_in) {
 			cell = "#" + cell_in;
 			if ($(cell).hasClass('alive')) {
@@ -41,9 +45,8 @@ var Display = function (init_board) {
 			}
 		}, 
 
-		// takes the board array from the game of life and updates the dom
+		// takes the board array from the game of life logic and updates the dom
 		update_dom: function(board) {
-			//console.log(board)
 			for_each(SIDE_LENGTH, function(x, y) {
 				var cell = '#' + x + '-' + y 
 
@@ -73,6 +76,7 @@ var Display = function (init_board) {
 			return new_board
 		},
 
+		// initialize the DOM
 		setup_dom: function() {
 			var canvas = $('<div>').attr({id: 'canvas', class: 'canvas'});
 			for (var i = 0; i < SIDE_LENGTH; i++) {

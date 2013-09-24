@@ -1,10 +1,3 @@
-
-// DOM <-> GRID EVENT LISTENERS
-
-// make it look nice
-// refactor some code
-
-
 // variable names DEAD and ALIVE for readability
 var DEAD = 0;
 var ALIVE = 1;
