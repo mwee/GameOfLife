@@ -9,7 +9,7 @@ var SIDE_LENGTH = 20;
 
 // initialize Board
 var life = Board(SIDE_LENGTH, SIDE_LENGTH);
-var dom_display = Display();
+var dom_display = Display(life.get_board());
 dom_display.setup_dom();
 
 $( "#slider" ).slider( "value", 800 );
@@ -19,9 +19,9 @@ var startLife = function() {
 	interval = setTimeout(function() {
 		slider_val = $("#slider").slider("value");
 		life.get_board();
-		dom_display.update_dom(life.get_board());
 		life.set_board(dom_display.return_board());
 		life.update();
+		dom_display.update_dom(life.get_board());
 		startLife();
 	}, slider_val);
 }

@@ -7,7 +7,7 @@ var for_each = function(max_iter, f) {
 }
 
 
-var Display = function () { 
+var Display = function (init_board) { 
 	SIDE_LENGTH = 20
 
 	var make_row = function (j) {
@@ -24,6 +24,10 @@ var Display = function () {
 		var cell = $('<div>', 
 			{class: 'cell alive', id: cell_name, x: x, y: y})
 				.attr("onClick", "dom_display.clicked(this.id)");
+		console.log(init_board)
+		if (init_board[x][y] == 0) {
+			cell.addClass('dead').removeClass('alive');
+		}
 		return cell
 	}
 
